@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
 {
     public function show() {
+
+        Storage::disk('public')->put('example.txt', 'Hello NMD2');
+
         return view('upload');
     }
  
