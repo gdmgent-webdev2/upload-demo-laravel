@@ -14,7 +14,7 @@ const autoprefixer = require("autoprefixer");
  */
 
 // bundle js
-mix.js("resources/js/app.js", "public/js");
+mix.js("resources/js/app.js", "public/js").sourceMaps().version();
 
 // bundle sass/css
 mix.sass("resources/sass/index.scss", "public/css/app.css")
