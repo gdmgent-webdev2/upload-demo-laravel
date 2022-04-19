@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UploadController extends Controller
 {
@@ -20,12 +21,23 @@ class UploadController extends Controller
             'file' => 'file|required|max:1000|mimes:png,jpg,gif,bmp'
         ]);
 
-        dd($r->file->getClientOriginalExtension());
+        // get extension
+        $ext = $r->file->getClientOriginalExtension();
 
+        // make random file name, with day-prefix
+        $randomName = date('d') . '-' . Str::random(10) . '.' . $ext;
+        
+        // path magic
+        $filePath = 'uploads/' . date('Y/m/');
+        $fullPath = $filePath . $randomName;
+
+        // upload files in symbolic public folder (make accessable)
+        /** @var Illuminate\Filesystem\FilesystemAdapter */
         $fileSystem = Storage::disk('public');
-        $randomName = date('d') . '-' . Str::random(10) . ''; // todo: add extension at the end;
+        $fileSystem->putFileAs($filePath, $r->file, $randomName);
 
 
-        dd($r->file);
+
+        dd('file is uploaded');
     }
 }
