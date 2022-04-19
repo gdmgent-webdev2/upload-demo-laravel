@@ -13,6 +13,8 @@ const autoprefixer = require("autoprefixer");
  |
  */
 
+mix.browserSync("08-upload-demo.test");
+
 // bundle js
 mix.js("resources/js/app.js", "public/js").sourceMaps().version();
 
