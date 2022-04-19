@@ -8,9 +8,17 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
 <body>
-    <h1 class="text-3xl font-bold underline">
+    <div class="container mx-auto p-5">
+        <h1 class="text-3xl font-bold underline mb-5">
         Upload Demo
-      </h1>
+        </h1>
+
+        <form method="post" action="{{ route('upload.store') }}">
+            <input type="file" name="file" id="file">
+            <button class="block bg-green-300 p-2 my-5" type="submit">Upload</button>
+        </form>
+    </div>
+
 
     <script src="{{ mix('js/app.js') }}"></script>
 </body>

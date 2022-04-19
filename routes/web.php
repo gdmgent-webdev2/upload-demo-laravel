@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UploadController::class, 'show']);
-Route::post('/', [UploadController::class, 'store']);
+Route::get('/', [UploadController::class, 'show'])->name('upload.show');
+Route::post('/', [UploadController::class, 'store'])->name('upload.store');
