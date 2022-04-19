@@ -1,4 +1,6 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
+const tailwindcss = require("tailwindcss");
+const autoprefixer = require("autoprefixer");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +13,13 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+// bundle js
+mix.js("resources/js/app.js", "public/js");
+
+// bundle sass/css
+mix.sass("resources/sass/index.scss", "public/css/app.css")
+    .options({
+        postCss: [autoprefixer, tailwindcss("./tailwind.config.js")],
+    })
+    .sourceMaps()
+    .version();
