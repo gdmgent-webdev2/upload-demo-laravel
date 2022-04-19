@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Upload Demo</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 </head>
@@ -14,6 +15,7 @@
         </h1>
 
         <form method="post" action="{{ route('upload.store') }}">
+            @csrf
             <input type="file" name="file" id="file">
             <button class="block bg-green-300 p-2 my-5" type="submit">Upload</button>
         </form>
