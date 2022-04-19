@@ -20,6 +20,12 @@ class UploadController extends Controller
             'file' => 'file|required|max:1000|mimes:png,jpg,gif,bmp'
         ]);
 
+        dd($r->file->getClientOriginalExtension());
+
+        $fileSystem = Storage::disk('public');
+        $randomName = date('d') . '-' . Str::random(10) . ''; // todo: add extension at the end;
+
+
         dd($r->file);
     }
 }
