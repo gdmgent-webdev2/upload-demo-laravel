@@ -13,7 +13,8 @@ class UploadController extends Controller
 
         Storage::disk('public')->put('example.txt', 'Hello NMD2');
 
-        return view('upload');
+        $files = File::all();
+        return view('upload', compact('files'));
     }
  
     public function store(Request $r) { 

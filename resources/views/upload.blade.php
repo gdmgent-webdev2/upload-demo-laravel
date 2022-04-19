@@ -14,6 +14,13 @@
         Upload Demo
         </h1>
 
+
+        @if (session('status'))
+            <div class="block bg-green-200 text-green-800">
+                {{ session('status') }}
+            </div>
+        @endif
+
         @if($errors->any())
             <div class="block bg-red-200 px-6 py-6 mb-5">
                 <ul class="text-red-600 list-disc list-inside">
@@ -28,7 +35,15 @@
             <input type="file" name="file" id="file">
             <button class="block bg-green-300 p-2 my-5" type="submit">Upload</button>
         </form>
-    </div>
+
+
+        <div class="grid grid-cols-4 gap-4">
+            @foreach($files as $file)
+                <div>
+                    <img src="{{ url('storage/' . $file->name) }}" alt="">
+                </div>
+            @endforeach
+        </div>
 
 
     <script src="{{ mix('js/app.js') }}"></script>
