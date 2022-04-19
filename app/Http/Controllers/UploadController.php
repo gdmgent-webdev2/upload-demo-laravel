@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -36,8 +37,12 @@ class UploadController extends Controller
         $fileSystem = Storage::disk('public');
         $fileSystem->putFileAs($filePath, $r->file, $randomName);
 
+        // add as record in database
+        $fileEntity = new File();
+        $fileEntity->name = $fullPath;
+        $fileEntity->save();
 
+        return redirect()->back()->with('status', 'File succesfully uploaded, with ID: ' . $fileEntity->id);
 
-        dd('file is uploaded');
     }
 }
