@@ -48,7 +48,9 @@
             @endforeach
         </div>
 
-
+        <script>
+            const routeRemove = '{{ route('api.upload.remove') }}';
+        </script>
     <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

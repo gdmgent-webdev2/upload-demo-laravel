@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::post('store', [UploadController::class, 'store'])->name('api.upload.store');
-
+Route::delete('remove', [UploadController::class, 'remove'])->name('api.upload.remove');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
