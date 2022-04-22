@@ -11,7 +11,7 @@ class UploadController extends Controller
 {
     public function show() {
 
-        Storage::disk('public')->put('example.txt', 'Hello NMD2');
+        // Storage::disk('public')->put('example.txt', 'Hello NMD2');
 
         $files = File::all();
         return view('upload', compact('files'));
