@@ -36,6 +36,9 @@
             <button class="block bg-green-300 p-2 my-5" type="submit">Upload</button>
         </form>
 
+        <!-- Example of a form that Dropzone can take over -->
+        <form id="dragndropzone" action="{{ route('api.upload.store') }}" class="dropzone"></form>
+
 
         <div class="grid grid-cols-4 gap-4">
             @foreach($files as $file)
